@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/hero/hero";
 import { About } from "@/components/sections/about/about";
 import { Philosophy } from "@/components/sections/philosophy/philosophy";
 import { Skills } from "@/components/sections/skills/skills";
+import { Projects } from "@/components/sections/projects/projects";
 import { Experience } from "@/components/sections/experience/experience";
 import { Education } from "@/components/sections/education/education";
 import { Certifications } from "@/components/sections/certifications/certifications";
@@ -15,23 +16,10 @@ export default function Home() {
       <About />
       <Philosophy />
       <Skills />
+      <Projects />
       <Experience />
       <Education />
       <Certifications />
-
-      <Section
-        id="projects"
-        eyebrow="Projects"
-        title="Featured projects placeholder"
-        description="Featured projects and detail pages arrive in Milestone 5."
-      >
-        <Card variant="glass" interactive className="max-w-3xl">
-          <p className="text-sm text-foreground/80">
-            Placeholder — Serverless E-Commerce and AceMyCareer will land here
-            with dedicated detail pages next.
-          </p>
-        </Card>
-      </Section>
 
       <Section
         id="contact"
