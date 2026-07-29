@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/constants";
+import { profile } from "@/lib/data";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -22,16 +23,46 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || SITE.url;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE.title,
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
-  authors: [{ name: SITE.author }],
+  authors: [{ name: SITE.author, url: SITE_URL }],
+  creator: SITE.author,
+  publisher: SITE.author,
   keywords: [...SITE.keywords],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE.name,
+    title: SITE.title,
+    description: SITE.description,
+    locale: SITE.locale,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.title,
+    description: SITE.description,
+    creator: `@${profile.socials.find((s) => s.platform === "github")?.value ?? "fsheikh79"}`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  category: "technology",
 };
 
 export const viewport: Viewport = {
@@ -40,6 +71,46 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
+
+function personJsonLd() {
+  const github = profile.socials.find((s) => s.platform === "github");
+  const linkedin = profile.socials.find((s) => s.platform === "linkedin");
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    jobTitle: profile.title,
+    email: `mailto:${profile.email}`,
+    telephone: profile.phone,
+    url: SITE_URL,
+    image: `${SITE_URL}/opengraph-image`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Toronto",
+      addressRegion: "ON",
+      addressCountry: "CA",
+    },
+    sameAs: [github?.href, linkedin?.href].filter(Boolean),
+    knowsAbout: [
+      "AWS",
+      "Terraform",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Infrastructure as Code",
+      "Serverless",
+      "DevOps",
+    ],
+    alumniOf: [
+      { "@type": "EducationalOrganization", name: "Seneca Polytechnic" },
+      { "@type": "EducationalOrganization", name: "George Brown College" },
+      {
+        "@type": "EducationalOrganization",
+        name: "Gujarat Technological University",
+      },
+    ],
+  };
+}
 
 export default function RootLayout({
   children,
@@ -55,7 +126,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider>
           <a
-            href="#hero"
+            href="#content"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-black"
           >
             Skip to content
@@ -68,6 +139,13 @@ export default function RootLayout({
           <CommandPalette />
           <LoadingScreen />
         </ThemeProvider>
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd()),
+          }}
+        />
       </body>
     </html>
   );
