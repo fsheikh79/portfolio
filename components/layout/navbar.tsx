@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { NAV_ITEMS, SITE } from "@/lib/constants";
 import { cn } from "@/utils/cn";
 import { useActiveSection } from "@/hooks/use-active-section";
+import { openCommandPalette } from "@/components/palette/command-palette";
 import { ThemeToggle } from "./theme-toggle";
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.section);
@@ -100,10 +101,10 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                aria-label="Open command palette (coming soon)"
-                title="Command palette · ⌘K (coming soon)"
-                disabled
-                className="hidden h-8 items-center gap-2 rounded-full border border-[color:var(--color-border)] bg-transparent px-2.5 text-xs text-foreground/60 md:inline-flex"
+                aria-label="Open command palette"
+                title="Command palette · ⌘K"
+                onClick={openCommandPalette}
+                className="hidden h-8 items-center gap-2 rounded-full border border-[color:var(--color-border)] bg-transparent px-2.5 text-xs text-foreground/70 transition-colors hover:border-primary/40 hover:text-primary md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <span>Search</span>
                 <kbd className="rounded border border-[color:var(--color-border)] bg-foreground/5 px-1.5 py-0.5 font-mono text-[10px]">

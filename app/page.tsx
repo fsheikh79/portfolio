@@ -6,6 +6,8 @@ import { Projects } from "@/components/sections/projects/projects";
 import { Experience } from "@/components/sections/experience/experience";
 import { Education } from "@/components/sections/education/education";
 import { Certifications } from "@/components/sections/certifications/certifications";
+import { GitHubDashboard } from "@/components/sections/github/github-dashboard";
+import { Terminal } from "@/components/sections/terminal/terminal";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 
@@ -20,6 +22,8 @@ export default function Home() {
       <Experience />
       <Education />
       <Certifications />
+      <GitHubDashboard />
+      <Terminal />
 
       <Section
         id="contact"
@@ -30,7 +34,11 @@ export default function Home() {
         <Card variant="glass" interactive className="max-w-3xl">
           <p className="text-sm text-foreground/80">
             Placeholder — real form + graceful mailto fallback ships in
-            Milestone 8.
+            Milestone 8. In the meantime, use{" "}
+            <kbd className="rounded border border-[color:var(--color-border)] bg-foreground/5 px-1.5 py-0.5 font-mono text-[10px]">
+              ⌘K
+            </kbd>{" "}
+            to copy email or phone.
           </p>
         </Card>
       </Section>

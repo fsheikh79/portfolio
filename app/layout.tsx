@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { LoadingScreen } from "@/components/animations/loading-screen";
+import { CommandPalette } from "@/components/palette/command-palette";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -64,6 +65,7 @@ export default function RootLayout({
           <div className="flex-1 pt-20">{children}</div>
           <Footer />
           <BackToTop />
+          <CommandPalette />
           <LoadingScreen />
         </ThemeProvider>
       </body>
