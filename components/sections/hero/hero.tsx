@@ -12,6 +12,7 @@ import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand-icons";
+import { SceneBackground } from "@/components/3d/scene-background";
 import { Avatar } from "./avatar";
 import { RoleRotator } from "./role-rotator";
 
@@ -21,7 +22,8 @@ const socialByPlatform = Object.fromEntries(
 
 export function Hero() {
   return (
-    <section id="hero" className="scroll-mt-24 pt-4 sm:pt-10">
+    <section id="hero" className="relative scroll-mt-24 pt-4 sm:pt-10">
+      <SceneBackground />
       <Container>
         <div className="grid items-center gap-12 py-14 sm:py-20 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16 md:py-24">
           <div className="flex flex-col items-start gap-6">

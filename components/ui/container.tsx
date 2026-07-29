@@ -1,33 +1,34 @@
-import type { ComponentPropsWithoutRef, ElementType } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
-type ContainerProps<T extends ElementType> = {
-  as?: T;
+interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   size?: "sm" | "md" | "lg" | "xl";
-} & Omit<ComponentPropsWithoutRef<T>, "as">;
+  children: ReactNode;
+}
 
-const sizeClass: Record<NonNullable<ContainerProps<"div">["size"]>, string> = {
+const sizeClass = {
   sm: "max-w-3xl",
   md: "max-w-5xl",
   lg: "max-w-6xl",
   xl: "max-w-7xl",
-};
+} as const;
 
-export function Container<T extends ElementType = "div">({
-  as,
+export function Container({
   size = "lg",
   className,
+  children,
   ...rest
-}: ContainerProps<T>) {
-  const Tag = (as ?? "div") as ElementType;
+}: ContainerProps) {
   return (
-    <Tag
+    <div
       className={cn(
         "mx-auto w-full px-6 sm:px-8 lg:px-10",
         sizeClass[size],
         className,
       )}
       {...rest}
-    />
+    >
+      {children}
+    </div>
   );
 }
