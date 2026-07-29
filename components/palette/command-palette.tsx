@@ -5,6 +5,7 @@ import type { KeyboardEvent } from "react";
 import { Check, CornerDownLeft, Search } from "lucide-react";
 import { useMounted } from "@/hooks/use-mounted";
 import { cn } from "@/utils/cn";
+import { copyToClipboard } from "@/utils/clipboard";
 import {
   buildActions,
   filterActions,
@@ -17,19 +18,6 @@ export const OPEN_PALETTE_EVENT = "portfolio:open-command-palette";
 interface Toast {
   message: string;
   timestamp: number;
-}
-
-async function safeCopy(text: string): Promise<boolean> {
-  if (typeof navigator === "undefined") return false;
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-  } catch {
-    // fall through
-  }
-  return false;
 }
 
 export function CommandPalette() {
@@ -117,11 +105,11 @@ export function CommandPalette() {
   const runAction = async (action: CommandAction) => {
     const ctx: CommandContext = {
       copy: async (text, label) => {
-        const ok = await safeCopy(text);
+        const ok = await copyToClipboard(text);
         setToast({
           message: ok
             ? `${label ?? "Value"} copied to clipboard`
-            : `Copy failed — value: ${text}`,
+            : `Couldn't copy automatically — select this: ${text}`,
           timestamp: Date.now(),
         });
       },
