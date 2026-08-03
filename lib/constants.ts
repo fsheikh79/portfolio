@@ -46,6 +46,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Projects", href: "/#projects", section: "projects" },
   { label: "Experience", href: "/#experience", section: "experience" },
   { label: "Education", href: "/#education", section: "education" },
+  { label: "Certifications", href: "/#certifications", section: "certifications" },
   { label: "Contact", href: "/#contact", section: "contact" },
 ];
 

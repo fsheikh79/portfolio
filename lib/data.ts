@@ -25,7 +25,7 @@ export const profile: Profile = {
   location: "Toronto, Ontario, Canada",
   email: "Fsheikh7799@gmail.com",
   phone: "+1 (437) 422-0822",
-  avatar: "/avatar.png",
+  avatar: "/avatar.jpg",
   resume: "/resume.pdf",
   socials: [
     {
