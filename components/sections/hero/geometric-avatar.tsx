@@ -17,7 +17,7 @@ export function GeometricAvatar({
       width={size}
       height={size}
       role="img"
-      aria-label="Placeholder avatar (drop /public/avatar.png to replace)"
+      aria-label="Placeholder avatar (drop /public/avatar.jpg to replace)"
       className={cn("select-none", className)}
     >
       <defs>

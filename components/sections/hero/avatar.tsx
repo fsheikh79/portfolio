@@ -3,7 +3,7 @@ import path from "node:path";
 import Image from "next/image";
 import { GeometricAvatar } from "./geometric-avatar";
 
-const AVATAR_FILENAMES = ["avatar.png", "avatar.jpg", "avatar.jpeg", "avatar.webp"];
+const AVATAR_FILENAMES = ["avatar.jpg", "avatar.jpeg", "avatar.png", "avatar.webp"];
 
 function resolveAvatar(): string | null {
   const publicDir = path.join(process.cwd(), "public");
@@ -58,7 +58,7 @@ export function Avatar() {
       <p className="mt-3 max-w-[16rem] text-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
         Placeholder · drop{" "}
         <code className="rounded bg-foreground/5 px-1 py-0.5 text-foreground/80 normal-case">
-          public/avatar.png
+          public/avatar.jpg
         </code>{" "}
         to replace
       </p>
