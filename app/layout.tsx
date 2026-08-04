@@ -10,6 +10,7 @@ import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { LoadingScreen } from "@/components/animations/loading-screen";
 import { CommandPalette } from "@/components/palette/command-palette";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -139,6 +140,7 @@ export default function RootLayout({
           <CommandPalette />
           <LoadingScreen />
         </ThemeProvider>
+        <Analytics />
         <script
           type="application/ld+json"
           suppressHydrationWarning
