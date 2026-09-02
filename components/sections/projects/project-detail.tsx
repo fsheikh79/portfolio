@@ -137,6 +137,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   aria-disabled={live.isPlaceholder}
                   className={live.isPlaceholder ? "opacity-70" : undefined}
                 >
+                  
                   <ExternalLink className="h-4 w-4" strokeWidth={2} />
                   Live Demo
                   {live.isPlaceholder && (
@@ -153,11 +154,12 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   size="md"
                   target={repo.isPlaceholder ? undefined : "_blank"}
                   rel={repo.isPlaceholder ? undefined : "noopener noreferrer"}
+                  
                   aria-disabled={repo.isPlaceholder}
                   className={repo.isPlaceholder ? "opacity-70" : undefined}
                 >
                   <GitHubIcon className="h-4 w-4" />
-                  GitHub
+                  GitHub 
                   {repo.isPlaceholder && (
                     <span className="ml-1 rounded-full bg-foreground/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-muted">
                       placeholder

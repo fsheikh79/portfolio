@@ -232,12 +232,12 @@ export const skills: SkillCategory[] = [
 export const projects: Project[] = [
   {
     slug: "serverless-ecommerce",
-    name: "Serverless E-Commerce Platform",
+    name: "SOLE — Serverless E-Commerce Platform",
     tagline: "A fully serverless storefront on AWS, provisioned end-to-end with Terraform.",
     role: "Team of 2 — Cloud + Backend",
     context: "Seneca Polytechnic capstone",
     summary:
-      "A production-style storefront built entirely on AWS serverless primitives. Users browse a catalog served from CloudFront + S3, sign in with Cognito, place orders through API Gateway + Lambda, persist data in DynamoDB, and check out with Stripe. Every resource ships through Terraform and every change ships through GitHub Actions.",
+      "A production-style storefront built entirely on AWS serverless services. Users browse a catalog delivered through CloudFront + S3, authenticate with Cognito, place orders through API Gateway + Lambda, persist data in DynamoDB, and check out with Stripe. A separate admin dashboard provides inventory and order management. Infrastructure is managed with Terraform, while GitHub Actions automates CI/CD with AWS OIDC authentication and security scanning.",
     stack: [
       "AWS Lambda",
       "API Gateway",
@@ -246,16 +246,26 @@ export const projects: Project[] = [
       "S3",
       "CloudFront",
       "Terraform",
-      "Docker",
       "GitHub Actions",
+      "Trivy",
+      "SonarQube",
       "Stripe",
     ],
     highlights: [
-      "Zero long-running servers — everything runs on Lambda + managed AWS services.",
-      "Single-table DynamoDB design for products, carts, and orders.",
-      "Cognito user pools with hosted UI and JWT-based API authorization.",
-      "Terraform modules for VPC-less serverless stacks, IAM roles, and CDN.",
-      "GitHub Actions pipeline: lint → test → terraform plan → apply → deploy.",
+      "Serverless architecture — Zero long-running servers; Lambda and managed AWS services handle application workloads.",
+      "Authentication & checkout — Cognito supports registered-user authentication and guest checkout with JWT-based API authorization.",
+      "E-commerce data layer — Single-table DynamoDB design supports products, carts, and orders.",
+      "Admin dashboard — Dedicated dashboard for inventory and order management.",
+      "DevSecOps pipeline — GitHub Actions runs linting, tests, Trivy vulnerability/IaC scanning, SonarQube analysis, Terraform plan, and deployment.",
+      "Keyless AWS authentication — GitHub Actions assumes a scoped AWS IAM role through OIDC; no long-lived AWS credentials.",
+      "Infrastructure as Code — Terraform manages the serverless infrastructure, IAM roles, and CloudFront configuration for repeatable deployments."
+
+      // "Zero long-running servers — everything runs on Lambda + managed AWS services.",
+      // "Registered-user and guest checkout flows via Cognito.",
+      // "Single-table DynamoDB design for products, carts, and orders.",
+      // "Cognito user pools with hosted UI and JWT-based API authorization.",
+      // "Terraform modules for VPC-less serverless stacks, IAM roles, and CDN.",
+      // "GitHub Actions pipeline: lint → test → terraform plan → apply → deploy.",
     ],
     challenges: [
       {
@@ -309,9 +319,9 @@ export const projects: Project[] = [
       },
       {
         label: "GitHub",
-        href: "https://github.com/fsheikh79",
+        href: "https://github.com/Ayush111003/sole-shoe-store",
         kind: "repo",
-        isPlaceholder: true,
+        isPlaceholder: false,
       },
     ],
     featured: true,
@@ -451,8 +461,9 @@ export const education: EducationItem[] = [
   {
     institution: "Seneca Polytechnic",
     program: "Cloud Administration & Architecture",
-    period: "Currently Enrolled",
-    status: "in-progress",
+    period: "Completed",
+    score: "GPA 3.9 / 4.0",
+    status: "completed",
     highlights: [
       "Advanced AWS architecture, networking, and security.",
       "Multi-cloud administration and hybrid deployments.",
@@ -462,7 +473,7 @@ export const education: EducationItem[] = [
     institution: "George Brown College",
     program: "Cloud Computing",
     period: "Completed",
-    score: "GPA 4.0 / 5.0",
+    score: "GPA 3.88 / 4.0",
     status: "completed",
     highlights: [
       "AWS core services, DevOps, and containers.",

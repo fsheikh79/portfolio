@@ -86,10 +86,11 @@ export function ArchitecturePlaceholder({
   project,
 }: ArchitecturePlaceholderProps) {
   const groups = bucket(project.stack);
-  const filename = `/projects/${project.slug}-architecture.svg`;
+  const filename = `/projects/${project.slug}-architecture.png`;
 
   return (
     <figure className="relative overflow-hidden rounded-2xl border border-dashed border-[color:var(--color-border)] bg-card/60 p-6 shadow-[var(--shadow-elevated)]">
+      
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:24px_24px]"
@@ -111,10 +112,9 @@ export function ArchitecturePlaceholder({
         </div>
         <Badge tone="neutral">
           <Boxes className="h-3 w-3" strokeWidth={2} />
-          Placeholder
+          Architecture
         </Badge>
       </div>
-
       <div className="relative mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((group) => (
           <div
@@ -134,13 +134,20 @@ export function ArchitecturePlaceholder({
           </div>
         ))}
       </div>
-
       <figcaption className="relative mt-6 flex flex-wrap items-center gap-2 border-t border-dashed border-[color:var(--color-border)] pt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+        <div className="relative mt-6 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-background/40">
+        <img
+          src={filename}
+          // alt={`${project.title} architecture diagram`}
+          className="block h-auto w-full object-contain"
+        />
+      </div>
+{/* 
         <span>Diagram placeholder · drop</span>
         <code className="rounded bg-foreground/5 px-1.5 py-0.5 normal-case text-foreground/80">
           public{filename}
         </code>
-        <span>to replace</span>
+        <span>to replace</span> */}
       </figcaption>
     </figure>
   );
